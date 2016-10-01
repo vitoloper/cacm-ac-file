@@ -9,7 +9,7 @@ main(int argc, char *argv[])
     FILE *input_fp; // File containing the model
 
     if (argc < 2) {
-        fprintf(stderr, "Usage: %s inputmodelfile\n", argv[0]);
+        fprintf(stderr, "Usage: %s input-model-file\n", argv[0]);
         exit(1);
     }
 

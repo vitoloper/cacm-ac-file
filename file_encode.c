@@ -10,7 +10,7 @@ main(int argc, char *argv[])
     FILE *output_fp;    /* The file that will contain the calculated model */
 
     if (argc < 3) {
-        fprintf(stderr, "Usage: %s inputfile outputmodelfile\n", argv[0]);
+        fprintf(stderr, "Usage: %s input-file output-model-file\n", argv[0]);
         exit(1);
     }
 
