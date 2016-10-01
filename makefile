@@ -20,7 +20,7 @@ file_encode:	file_encode.o file_model.o bit_output.o \
 
 file_decode:	file_decode.o file_model.o bit_input.o \
 			  arithmetic_decode.o
-			cc decode.o file_model.o bit_input.o \
+			cc file_decode.o file_model.o bit_input.o \
 			  arithmetic_decode.o -o file_decode
 
 encode.o:		encode.c model.h
