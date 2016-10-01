@@ -27,13 +27,13 @@ main(int argc, char *argv[])
     }
 
     start_model_encode(input_fp, output_fp);            /* Set up other modules.    */
-    fclose(input_fp);
     fclose(output_fp);
+    rewind(input_fp);   /* Set the file position indicator to the beginning of the file. */
     start_outputing_bits();
     start_encoding();
     for (;;) {                  /* Loop through characters. */
         int ch; int symbol;
-        ch = getc(stdin);           /* Read the next character. */
+        ch = getc(input_fp);           /* Read the next character from file. */
         if (ch==EOF) break;         /* Exit loop on end-of-file.*/
         symbol = char_to_index[ch];     /* Translate to an index.   */
         encode_symbol(symbol,cum_freq);     /* Encode that symbol.      */
@@ -41,5 +41,6 @@ main(int argc, char *argv[])
     encode_symbol(EOF_symbol,cum_freq);     /* Encode the EOF symbol.   */
     done_encoding();                /* Send the last few bits.  */
     done_outputing_bits();
+    fclose(input_fp);   /* Close input file */
     exit(0);
 }
