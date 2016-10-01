@@ -47,13 +47,13 @@ start_model_encode(FILE *fp, FILE *fp_model)
         cum_freq[i-1] = cum_freq[i] + freq[i];
     }
 
-    for(i = 0; i < No_of_symbols+1; i++) {
+    /* for(i = 0; i < No_of_symbols+1; i++) {
         fprintf(stderr, "freq[%d] = %d\n", i, freq[i]);
-    }
+    } */
 
     /* Halve all counts if frequency counts are at their maximum. */
     while (cum_freq[0] >= Max_frequency) {
-            fprintf(stderr, "cum_freq[0]: %d - Halving!\n", cum_freq[0]);
+            /* fprintf(stderr, "cum_freq[0]: %d - Halving!\n", cum_freq[0]); */
             int cum;
             cum = 0;
             for (i = No_of_symbols; i>=0; i--) {
@@ -89,11 +89,11 @@ start_model_decode(FILE *fp)
     }
 
     result = fread(freq, (No_of_symbols+1)*sizeof (int), 1, fp);
-    fprintf(stderr, "Number of items read: %d\n", result);
+    /* fprintf(stderr, "Number of items read: %d\n", result); */
 
-     for(i = 0; i < No_of_symbols+1; i++) {
+    /* for(i = 0; i < No_of_symbols+1; i++) {
         fprintf(stderr, "freq[%d] = %d\n", i, freq[i]);
-    }
+    } */
 
     cum_freq[No_of_symbols] = 0;
     for (i = No_of_symbols; i > 0 ; i--) {  /* Set up cumulative frequency counts */
@@ -102,7 +102,7 @@ start_model_decode(FILE *fp)
 
     // Halve frequency counts
     while (cum_freq[0] >= Max_frequency) {       /* See if frequency counts  */
-            fprintf(stderr, "cum_freq[0]: %d - Halving!\n", cum_freq[0]);
+            /* fprintf(stderr, "cum_freq[0]: %d - Halving!\n", cum_freq[0]); */
             int cum;                /* are at their maximum.    */
             cum = 0;
             for (i = No_of_symbols; i>=0; i--) {    /* If so, halve all the     */
